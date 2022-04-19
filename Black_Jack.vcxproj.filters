@@ -24,12 +24,18 @@
     <ClCompile Include="Koloda.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Igrok.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Karta.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Koloda.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Igrok.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

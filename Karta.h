@@ -7,6 +7,10 @@ class Karta // класс одной карты
 	char digit; // достоинство карты
 	char mast[7]; // масть
 public:
+	char Get_num() // вернуть достоинство карты
+	{
+		return digit;
+	}
 	void Get_karta() // показать карту
 	{
 		cout << digit <<"/" <<mast<<"\n";
@@ -19,8 +23,5 @@ public:
 	{
 		strcpy_s(mast, m);
 	}
-
-
-
 };
 
