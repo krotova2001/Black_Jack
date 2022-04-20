@@ -53,8 +53,13 @@ public:
 		if (cur > 0) // если в колоде еще есть карты, ты выдаем
 		{
 			cur--;
-			return Karta_cur[cur+1];
+			return Karta_cur[cur];
 		}
+	}
+
+	int Get_cur() // текущее кол-во карт в колоде
+	{
+		return cur;
 	}
 };
 

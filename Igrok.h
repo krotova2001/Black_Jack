@@ -7,19 +7,19 @@ class Igrok
 {
 	char name[10]; // имя
 	Karta Karta_own[10]; // карты на руках, максимально 10
-	int karta_cur; // колчиество карт на руках
+	int karta_cur; // количество карт на руках
 	int score; // счет
 	int ochki; // очки карт
 public:
-	void Set_name(char* n)
+	
+	Igrok(const char* n) // конструктор, который принимает имя игрока
 	{
-		strncpy_s(name, n, 9);
-	}
-	Igrok()
-	{
-		
+		strcpy_s(name, n);
 		karta_cur = score = ochki = 0;
-		
+	}
+	char* Get_Name()
+	{
+		return name;
 	}
 	
 	void Get_ochki(Karta a) // опредление очка карты. По правилам игры Очко
@@ -52,7 +52,21 @@ public:
 			Karta_own[i].Get_karta();
 		}
 		cout << "Ochki - " << ochki;
-		cout << "\n----------------";
+		cout << "\n----------------\n";
+	}
+	int Ochki() // возращает  очки карт на руках, для определения победителя
+	{
+		return ochki;
+	}
+
+	void Score_up() // если выйграл - повышаем счет
+	{
+		score++;
+	}
+
+	int Get_score() // показать счет
+	{
+		return score;
 	}
 
 };
