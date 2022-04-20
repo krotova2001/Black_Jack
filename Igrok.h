@@ -68,6 +68,11 @@ public:
 	{
 		return score;
 	}
+	void Reset() //סבנמס ךאנע
+	{
+		karta_cur = 0;
+		ochki = 0;
+	}
 
 };
 

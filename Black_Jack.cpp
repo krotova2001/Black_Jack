@@ -1,5 +1,6 @@
 ﻿// Игра Блэк - Джек, два игрока без участия компьютера.
 //Правила оценки карт по русской игре "21", туз -всегда 11. Как сделать 1  или 11 я пока не знаю
+//компьютер играет сам с собой
 
 #include <iostream>
 //#include "Koloda.h" можно не импортировать - так работает
@@ -8,6 +9,7 @@
 using namespace std;
 char* Win(Igrok* a, Igrok* b) // функция проверки не выйграл ли кто. Чтоб не было лишних конструкторов, возвращает указатель на победителя
 {
+    char n[] = "nobody";
     if (a->Ochki()>b->Ochki()) // если очков больше, то он и выйграл
     {
         a->Score_up(); // увеличиваем счет
@@ -18,7 +20,8 @@ char* Win(Igrok* a, Igrok* b) // функция проверки не выйгр
         b->Score_up();
         return b->Get_Name();
     }
-    //else return; // если ничья - ничего не возвращаем
+    
+    else return n; // если ничья - ничего не возвращаем
 }
 
 int main()
@@ -37,15 +40,23 @@ int main()
     Vanya.Show();
     cout << "Winner is " << Win(&Sanya, &Vanya)<<"\n";
 
-    cout << "Play untill end? (y/n)";
-    char ans;
+    cout << "Play untill end? (1/0)";
+    int ans;
     cin>> ans;
    
-    if (ans=='y') 
+    if (ans==1) 
     {
-        while (A.Get_cur()<2)
+        while (A.Get_cur()>2) // играем,пока не кончатся карты в колоде (до 2 карт)
         {
-            return;
+            Vanya.Reset();
+            Sanya.Reset();
+            Sanya.Get_Kart(A.Give_Kart()); // берем по карте
+            Sanya.Get_Kart(A.Give_Kart()); // немного громоздко - через две функции, игрок - берет, а колода - дает
+            Vanya.Get_Kart(A.Give_Kart());
+            Vanya.Get_Kart(A.Give_Kart());
+            Sanya.Show(); // смотрим
+            Vanya.Show();
+            cout << "Winner is " << Win(&Sanya, &Vanya) << "\n";
         }
     }
   
